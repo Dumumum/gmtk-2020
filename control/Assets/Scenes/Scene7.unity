@@ -1363,6 +1363,8 @@ MonoBehaviour:
   range: 2
   openHand: {fileID: 21300000, guid: 9a037447962a6634f9d9aafbc39f28df, type: 3}
   closedHand: {fileID: 21300000, guid: 053dac304e5d2a549a8aecea127f1bc7, type: 3}
+  cocaineOpen: {fileID: 0}
+  cocaineClosed: {fileID: 0}
 --- !u!231 &402304193
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -7106,10 +7108,10 @@ MonoBehaviour:
   textSpeed: 0.1
   fadeSpeed: 1
   lines:
-  - I've been trying to manage my finances recently, but it hasn't been going well.
-  - But I think $20 will do for now.
+  - I've been trying to manage my finances, but it hasn't been going well.
+  - But I think $25 will do for now.
   delay:
-  - 10
+  - 2
   - 20
 --- !u!222 &9024496677596905060
 CanvasRenderer:

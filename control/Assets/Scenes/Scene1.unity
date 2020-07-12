@@ -221,7 +221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &634238280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toTransparent: 1
-  waitTime: 5
+  waitTime: 6
   fadeSpeed: 1
   otherObj: {fileID: 1225661427}
 --- !u!1 &1082559933
@@ -332,6 +332,8 @@ MonoBehaviour:
   range: 2
   openHand: {fileID: 21300000, guid: 9a037447962a6634f9d9aafbc39f28df, type: 3}
   closedHand: {fileID: 21300000, guid: 053dac304e5d2a549a8aecea127f1bc7, type: 3}
+  cocaineOpen: {fileID: 0}
+  cocaineClosed: {fileID: 0}
 --- !u!231 &1082559935
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -464,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toTransparent: 0
-  waitTime: 5
+  waitTime: 6
   fadeSpeed: 1
   otherObj: {fileID: 0}
 --- !u!1 &1225661427
@@ -486,7 +488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1225661428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -578,7 +580,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.75}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -589,7 +591,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.25}
+  m_Size: {x: 4, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &1225661432
 MonoBehaviour:
@@ -736,13 +738,15 @@ MonoBehaviour:
   textSpeed: 0.1
   fadeSpeed: 3
   lines:
+  - 
   - '...zzz...'
   - BUZZ BUZZ BUZZ
   - Ugh. Guess it's time to get up for work.
   delay:
-  - 1.5
-  - 1.5
   - 1
+  - 1.5
+  - 1.5
+  - 3
 --- !u!222 &2118637450189158028
 CanvasRenderer:
   m_ObjectHideFlags: 0

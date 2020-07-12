@@ -1257,7 +1257,7 @@ MonoBehaviour:
   textSpeed: 0.15
   fadeSpeed: 1
   lines:
-  - Recently, I've been trying some... different methods.
+  - I've been trying some... different methods.
   - I tell myself I do it for the money.
   delay:
   - 1.5
@@ -3113,7 +3113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1897767624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3146,7 +3146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toTransparent: 1
-  waitTime: 6.5
+  waitTime: 5.5
   fadeSpeed: 2.5
   otherObj: {fileID: 0}
 --- !u!114 &1897767626
