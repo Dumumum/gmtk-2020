@@ -9,6 +9,8 @@ TagManager:
   - Ramen
   - Hand
   - Money
+  - Drug
+  - Light
   layers:
   - Default
   - TransparentFX

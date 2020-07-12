@@ -11,11 +11,14 @@ public class BaseHand : MonoBehaviour
     public float range;
     public Sprite openHand;
     public Sprite closedHand;
+    public Sprite cocaineOpen;
+    public Sprite cocaineClosed;
 
     private bool isGrab;
     private Rigidbody2D rigid;
     private CircleCollider2D circle;
     private List<DistanceJoint2D> hinges;
+    private bool isCocaine;
 
     private void Start()
     {
@@ -25,6 +28,7 @@ public class BaseHand : MonoBehaviour
         circle = GetComponent<CircleCollider2D>();
         circle.enabled = false;
         hinges = new List<DistanceJoint2D>();
+        isCocaine = false;
     }
 
     // Update is called once per frame
@@ -40,7 +44,10 @@ public class BaseHand : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             // Change sprite
-            GetComponent<SpriteRenderer>().sprite = closedHand;
+            if(!isCocaine)
+                GetComponent<SpriteRenderer>().sprite = closedHand;
+            else
+                GetComponent<SpriteRenderer>().sprite = cocaineClosed;
 
             // Check for objects to grab
             circle.enabled = true;
@@ -48,7 +55,10 @@ public class BaseHand : MonoBehaviour
         // Open sesame
         else
         {
-            GetComponent<SpriteRenderer>().sprite = openHand;
+            if(!isCocaine)
+                GetComponent<SpriteRenderer>().sprite = openHand;
+            else
+                GetComponent<SpriteRenderer>().sprite = cocaineOpen;
 
             // If we have hinges, remove all of them
             if (hinges.Count > 0)
@@ -95,9 +105,6 @@ public class BaseHand : MonoBehaviour
 
                     // Set up the base variables
                     hinge.connectedBody = other.gameObject.GetComponent<Rigidbody2D>();
-                    //ColliderDistance2D dist = Physics2D.Distance(other, gameObject.GetComponent<CircleCollider2D>());
-                    //hinge.anchor = dist.pointB;
-                    //hinge.connectedAnchor = dist.pointB;
                     hinge.maxDistanceOnly = true;
 
                     // Save for later
@@ -107,6 +114,13 @@ public class BaseHand : MonoBehaviour
                 {
                     other.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 }
+            }
+
+            // Check for cocaine
+            if(other.tag == "Drug")
+            {
+                isCocaine = true;
+                GetComponent<SpriteRenderer>().sprite = cocaineClosed;
             }
         }
     }
