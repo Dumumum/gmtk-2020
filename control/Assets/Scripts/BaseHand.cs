@@ -15,6 +15,7 @@ public class BaseHand : MonoBehaviour
     private bool isGrab;
     private Rigidbody2D rigid;
     private CircleCollider2D circle;
+    private List<DistanceJoint2D> hinges;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class BaseHand : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         circle = GetComponent<CircleCollider2D>();
         circle.enabled = false;
+        hinges = new List<DistanceJoint2D>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,16 @@ public class BaseHand : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().sprite = openHand;
+
+            // If we have hinges, remove all of them
+            if (hinges.Count > 0)
+            {
+                while(hinges.Count > 0)
+                {
+                    Destroy(hinges[0]);
+                    hinges.RemoveAt(0);
+                }
+            }
 
             // Deparent and reset all children
             for(int i = 0; i < gameObject.transform.childCount; ++i)
@@ -75,9 +87,33 @@ public class BaseHand : MonoBehaviour
                 // Lock to parent and make kinematic
                 other.transform.parent = this.transform;
 
-                other.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                // If this item should pivot around
+                if(other.GetComponent<Grabbable>().pivot)
+                {
+                    // Attach by a hinge
+                    DistanceJoint2D hinge = gameObject.AddComponent<DistanceJoint2D>();
+
+                    // Set up the base variables
+                    hinge.connectedBody = other.gameObject.GetComponent<Rigidbody2D>();
+                    //ColliderDistance2D dist = Physics2D.Distance(other, gameObject.GetComponent<CircleCollider2D>());
+                    //hinge.anchor = dist.pointB;
+                    //hinge.connectedAnchor = dist.pointB;
+                    hinge.maxDistanceOnly = true;
+
+                    // Save for later
+                    hinges.Add(hinge);
+                }
+                else
+                {
+                    other.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                }
             }
         }
+    }
+
+    public bool IsGrabbing()
+    {
+        return isGrab;
     }
 
 }

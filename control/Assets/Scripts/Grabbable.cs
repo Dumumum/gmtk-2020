@@ -6,4 +6,5 @@ public class Grabbable : MonoBehaviour
 {
     // Variables
     public bool grab;
+    public bool pivot;
 }
