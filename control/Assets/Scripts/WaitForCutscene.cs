@@ -10,6 +10,7 @@ public class WaitForCutscene : MonoBehaviour
     public GameObject cutscene;
     public GameObject smoke;
     public GameObject car;
+    public GameObject soundCar;
 
     private float timer;
 
@@ -28,6 +29,7 @@ public class WaitForCutscene : MonoBehaviour
             smoke.SetActive(true);
             smoke.GetComponent<ParticleSystem>().Play();
             cutscene.SetActive(true);
+            soundCar.SetActive(false);
 
             // Turn off wheels
             foreach (WheelJoint2D wheel in car.GetComponents<WheelJoint2D>())

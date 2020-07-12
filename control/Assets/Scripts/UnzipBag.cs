@@ -7,6 +7,8 @@ public class UnzipBag : MonoBehaviour
     // Variables
     public GameObject openBag;
     public GameObject thisBag;
+    public GameObject soundZip;
+    public AudioClip zipping;
 
     public void OpenBag()
     {
@@ -20,5 +22,7 @@ public class UnzipBag : MonoBehaviour
     {
         if (collision.tag == "Money")
             OpenBag();
+        else
+            soundZip.GetComponent<AudioSource>().PlayOneShot(zipping);
     }
 }
