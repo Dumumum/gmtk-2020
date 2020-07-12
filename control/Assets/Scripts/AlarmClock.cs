@@ -9,6 +9,8 @@ public class AlarmClock : MonoBehaviour
     public Sprite brokenClock;
     public float breakTimer;
     public string nextScene;
+    public GameObject soundAlarm;
+    public GameObject soundShatter;
 
     public bool boxFirst;  // Has the box collider been hit first?
     private bool isBroken;  // When the sprite should be broken
@@ -60,6 +62,10 @@ public class AlarmClock : MonoBehaviour
             {
                 // The clock is broken
                 isBroken = true;
+
+                // Manage sounds
+                soundAlarm.SetActive(false);
+                soundShatter.SetActive(true);
             }
 
             boxFirst = false;
